@@ -21,6 +21,10 @@ document.addEventListener('click', (e) => {
 async function includePartial(selector, url) {
   const mount = document.querySelector(selector);
   if (!mount) return;
+  // Production ships the partials baked into the HTML (scripts/inline-partials.py) so
+  // crawlers see the nav. Only re-fetch on localhost so edits show up while developing.
+  const isDev = ['localhost', '127.0.0.1'].includes(location.hostname);
+  if (!isDev && mount.children.length) return;
   try {
     const res = await fetch(url, { cache: 'no-cache' });
     mount.innerHTML = await res.text();
