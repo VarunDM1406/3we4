@@ -173,22 +173,3 @@ document.addEventListener('click', (e) => {
 if (getConsent() === 'accepted') loadAnalytics();
 else if (!getConsent()) window.addEventListener('load', showConsentBanner);
 
-// ---- Newsletter form validation ----
-document.addEventListener('submit', (e) => {
-  const form = e.target.closest('.footer-newsletter');
-  if (!form) return;
-  const input = form.querySelector('input[type="email"]');
-  const err = form.querySelector('.form-error');
-  const value = input.value.trim();
-  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
-  if (!ok) {
-    e.preventDefault();
-    err.textContent = value ? 'That email address doesn\u2019t look right. Please check it.' : 'Please enter your email address.';
-    err.hidden = false;
-    input.setAttribute('aria-invalid', 'true');
-    input.focus();
-  } else {
-    err.hidden = true;
-    input.removeAttribute('aria-invalid');
-  }
-});
