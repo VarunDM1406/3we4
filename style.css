@@ -1456,3 +1456,47 @@ a { color: inherit; text-decoration: none; }
 .teaser-grid-2 { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 860px) { .teaser-grid-2 { grid-template-columns: 1fr; } }
 @media (max-width: 760px) { .post-body { padding: 8px 0 64px; } .prose h2 { margin-top: 44px; } }
+
+
+/* ---------------------------------------------
+   Log in (header pill + login page)
+--------------------------------------------- */
+.nav a.nav-login {
+  color: var(--accent);
+  border: 1px solid rgba(201, 255, 62, 0.4);
+  border-radius: 999px;
+  padding: 7px 16px;
+  line-height: 1;
+}
+.nav a.nav-login::after { display: none; }
+.nav a.nav-login:hover, .nav a.nav-login.active { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+
+.login-options { padding: 24px 0 112px; }
+.login-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 880px; }
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  color: var(--text);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.login-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.login-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.login-card h2 { font-family: var(--font-display); font-size: 34px; line-height: 1; letter-spacing: -0.01em; }
+.login-card > p:not(.eyebrow) { color: var(--text-muted); flex: 1; }
+.login-card .btn { margin-top: 8px; }
+.login-note { color: var(--text-muted); font-size: 14px; max-width: 680px; margin-top: 28px; }
+.login-note + .login-note { margin-top: 10px; }
+.login-note a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.login-note strong { color: var(--text); }
+
+@media (max-width: 760px) {
+  .login-grid { grid-template-columns: 1fr; }
+  .login-options { padding-bottom: 72px; }
+  .nav a.nav-login { align-self: flex-start; }
+}
